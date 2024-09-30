@@ -29,7 +29,7 @@ Pros:
 * Simple to understand
 * Improved type meaning
 * Extending constructor parameter list triggers compile errors for all call sights
-* Reduced parameter list by creating concrete types out of related types
+* Reduced parameter list by creating types out of related types
 
 Cons:
 * The order of the constructor parameters with the same type may still be mixed up
@@ -57,6 +57,10 @@ Extra:
 ### Performance
 
 The results from the benchmarks showed each style performed equally within an acceptable margin of error. However it is important to support constructing objects in place (std::vector::emplace_back(...)) because this method had the best performance.
+
+### Recommendation
+
+Strongly typing every constructor parameter is appealing and enforces type correctness. However in the example I found the boiler plate code mounted up quickly and started to add additional layers of indirection, resulting in an interface that was hard to use. I would recommend using common techniques for strongly typing literals and creating types from related types. This combined with well named parameters should create an interface that is easy to use and understand.
 
 ## Setup
 

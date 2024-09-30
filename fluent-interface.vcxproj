@@ -145,6 +145,11 @@
     <None Include="vcpkg-configuration.json" />
     <None Include="vcpkg.json" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="circle_literals.h" />
+    <ClInclude Include="circle_strongtypes.h" />
+    <ClInclude Include="circle_types.h" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

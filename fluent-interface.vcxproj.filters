@@ -31,4 +31,9 @@
       <Filter>Misc</Filter>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="circle_literals.h" />
+    <ClInclude Include="circle_types.h" />
+    <ClInclude Include="circle_strongtypes.h" />
+  </ItemGroup>
 </Project>

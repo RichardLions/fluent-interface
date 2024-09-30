@@ -1,14 +1,62 @@
 # Fluent Interface
 
-...
+This repository demonstrate an example use case for using a fluent interface to construct an object with literals, types and strong types. Each style reduces the ambiguity between types to reduce misuse.
 
-## When To Use
+Note: Does not take into account the use of Named Arguments.
 
-...
+## Pros and Cons
 
-## Features
+### [Literals](circle_literals.h)
 
-...
+Pros:
+* Common style
+* Simple to understand
+* Extending the constructor parameter list triggers compile errors for all call sights
+
+Cons:
+* Easy to mix up the order of parameters with the same type
+* Literal types do not express meaning
+* Large parameter lists can become hard to maintain
+
+Extra:
+* Using literal operator when passing in parameters can help express meaning
+* Using the explicit keyword reduces the number of accepted types
+
+### [Types](circle_types.h)
+
+Pros:
+* Common style
+* Simple to understand
+* Improved type meaning
+* Extending constructor parameter list triggers compile errors for all call sights
+* Reduced parameter list by creating concrete types out of related types
+
+Cons:
+* The order of the constructor parameters with the same type may still be mixed up
+* Large parameter lists can become hard to maintain
+
+Extra:
+* Using literal operator when passing in parameters can help express meaning
+* Using the explicit keyword reduces the number of accepted types
+
+### [Strong Types](circle_strongtypes.h)
+
+Pros:
+* Cannot mix up constructor parameters
+* Can pass constructor parameters in any order
+* Strong types fully convey meaning
+
+Cons:
+* Cannot enforce required constructor parameters
+* Cannot mix styles. All types used must be strong types
+* Boiler plate code
+
+Extra:
+* Removing the Fluent Interface would enable the enforcement of required constructor parameters. However this would reduce the reason for using strong types.
+
+### Performance
+
+The results from the benchmarks showed each style performed equally within an acceptable margin of error. However it is important to support constructing objects in place (std::vector::emplace_back(...)) because this method had the best performance.
 
 ## Setup
 
@@ -45,6 +93,6 @@ vcpkg new --application
 ```
 
 ### TODO
-- [ ] Implementation
-- [ ] Unit Tests
-- [ ] Benchmarks
+- [x] Implementation
+- [x] Unit Tests
+- [x] Benchmarks
